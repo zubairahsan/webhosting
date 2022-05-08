@@ -20,13 +20,13 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 14
+        node-version: 16
         cache: 'npm'
     - uses: borales/actions-yarn@v2.3.0
       with:
         cmd: build
     - name: build react app
-      run: yarn build
+      run: npm run build
     - name: install surge
       run: npm install -g surge
     - name: deploy using surge 
