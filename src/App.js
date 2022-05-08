@@ -1,6 +1,8 @@
 
 import { useSelector } from 'react-redux';
 // import Hello from './hello';
+import {Provider} from 'react-redux';
+import store from './store/store';
 import './App.css';
 
 // let arr = [{id:1},{id:2},{id:3},{id:4},{id:5},{id:6}]
@@ -13,6 +15,7 @@ function App() {
   const todo = useSelector((state)=> state.data);
   console.log(todo)
   return (
+    <Provider store={store}>
     <div className="App">
       <header className="App-header">
         {/* <h1 style={{color:'red'}}>Hello world</h1> */}
@@ -33,6 +36,7 @@ function App() {
         }
       </header>
     </div>
+    </Provider>
   );
 }
 
