@@ -1,22 +1,36 @@
-import logo from './logo.svg';
+
+import { useSelector } from 'react-redux';
+// import Hello from './hello';
 import './App.css';
 
+// let arr = [{id:1},{id:2},{id:3},{id:4},{id:5},{id:6}]
+// const handleDel =(id)=>{
+//   console.log(id)
+//   let index = arr.findIndex((arr,id)=>arr.id == id);
+//   console.log(index)
+// }
 function App() {
+  const todo = useSelector((state)=> state.data);
+  console.log(todo)
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* <h1 style={{color:'red'}}>Hello world</h1> */}
+        {/* <Hello arr={arr} handleDel={handleDel}/> */}
+        {
+          todo.map((todo)=>{
+            return <div key={todo.id}>
+                    <h3>{todo.name}</h3>
+                    {
+                      todo.favorite.map((fav)=>{
+                        return <small key={fav}>
+                          {JSON.stringify(fav)}
+                        </small>
+                      })
+                    }
+            </div>  
+          })
+        }
       </header>
     </div>
   );
